@@ -144,7 +144,7 @@ const Index = () => {
             spacing={0}
             // flex="column"
           >
-            {data.length > 0 ? (
+            {data ? (
               <Table>
                 <TableHead>
                   <TableCell>#</TableCell>
@@ -158,46 +158,50 @@ const Index = () => {
                   <TableCell>Date Created</TableCell>
                   <TableCell>Options</TableCell>
                 </TableHead>
-                {data.map((item, index) => (
-                  <TableBody key={index}>
-                    <TableCell>{index + 1}</TableCell>
-                    <TableCell>
-                      {item.adImage ? (
-                        <Image
-                          src={`${baseUrl}/images/ads/${item.adImage}`}
-                          height={50}
-                          width={50}
-                          objectFit="cover"
-                        />
-                      ) : (
-                        <Avatar />
-                      )}
-                    </TableCell>
-                    <TableCell>{item.User.name}</TableCell>
-                    <TableCell>{item.title}</TableCell>
-                    <TableCell>{item.description}</TableCell>
-                    <TableCell>{item.price}</TableCell>
-                    <TableCell>{item.weight}</TableCell>
-                    <TableCell>{item.status}</TableCell>
-                    <TableCell>{item.createdAt}</TableCell>
-                    <TableCell>
-                      <Grid container spacing={1}>
-                        {/* <Grid item>
+                {data.length > 0 ? (
+                  data.map((item, index) => (
+                    <TableBody key={index}>
+                      <TableCell>{index + 1}</TableCell>
+                      <TableCell>
+                        {item.adImage ? (
+                          <Image
+                            src={`${baseUrl}/images/ads/${item.adImage}`}
+                            height={50}
+                            width={50}
+                            objectFit="cover"
+                          />
+                        ) : (
+                          <Avatar />
+                        )}
+                      </TableCell>
+                      <TableCell>{item.User.name}</TableCell>
+                      <TableCell>{item.title}</TableCell>
+                      <TableCell>{item.description}</TableCell>
+                      <TableCell>{item.price}</TableCell>
+                      <TableCell>{item.weight}</TableCell>
+                      <TableCell>{item.status}</TableCell>
+                      <TableCell>{item.createdAt}</TableCell>
+                      <TableCell>
+                        <Grid container spacing={1}>
+                          {/* <Grid item>
                           <IconButton>
                             <Edit color="info" />
                           </IconButton>
                         </Grid> */}
-                        <Grid item>
-                          <IconButton
-                            onClick={() => handleDelete(item.id.toString())}
-                          >
-                            <Delete color="error" />
-                          </IconButton>
+                          <Grid item>
+                            <IconButton
+                              onClick={() => handleDelete(item.id.toString())}
+                            >
+                              <Delete color="error" />
+                            </IconButton>
+                          </Grid>
                         </Grid>
-                      </Grid>
-                    </TableCell>
-                  </TableBody>
-                ))}
+                      </TableCell>
+                    </TableBody>
+                  ))
+                ) : (
+                  <Typography>Loading...</Typography>
+                )}
               </Table>
             ) : (
               <Typography variant="body1" color="initial">

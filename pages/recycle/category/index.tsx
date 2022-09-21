@@ -211,7 +211,7 @@ const Index = () => {
             spacing={0}
             // flex="column"
           >
-            {data.length > 0 ? (
+            {data ? (
               <Table>
                 <TableHead>
                   <TableCell>#</TableCell>
@@ -219,38 +219,42 @@ const Index = () => {
                   <TableCell>Name</TableCell>
                   <TableCell>Options</TableCell>
                 </TableHead>
-                {data.map((item, index) => (
-                  <>
-                    <TableBody>
-                      <TableCell>{index}</TableCell>
-                      <TableCell>
-                        <Image
-                          src={`${baseUrl}/images/categoryImages/${item.icon}`}
-                          height={50}
-                          width={50}
-                          objectFit="cover"
-                        />
-                      </TableCell>
-                      <TableCell>{item.name}</TableCell>
-                      <TableCell>
-                        <Grid container spacing={1}>
-                          <Grid item>
-                            <IconButton>
-                              <Edit color="info" />
-                            </IconButton>
+                {data.length > 0 ? (
+                  data.map((item, index) => (
+                    <>
+                      <TableBody>
+                        <TableCell>{index}</TableCell>
+                        <TableCell>
+                          <Image
+                            src={`${baseUrl}/images/categoryImages/${item.icon}`}
+                            height={50}
+                            width={50}
+                            objectFit="cover"
+                          />
+                        </TableCell>
+                        <TableCell>{item.name}</TableCell>
+                        <TableCell>
+                          <Grid container spacing={1}>
+                            <Grid item>
+                              <IconButton>
+                                <Edit color="info" />
+                              </IconButton>
+                            </Grid>
+                            <Grid item>
+                              <IconButton
+                                onClick={() => handleDelete(item.id.toString())}
+                              >
+                                <Delete color="error" />
+                              </IconButton>
+                            </Grid>
                           </Grid>
-                          <Grid item>
-                            <IconButton
-                              onClick={() => handleDelete(item.id.toString())}
-                            >
-                              <Delete color="error" />
-                            </IconButton>
-                          </Grid>
-                        </Grid>
-                      </TableCell>
-                    </TableBody>
-                  </>
-                ))}
+                        </TableCell>
+                      </TableBody>
+                    </>
+                  ))
+                ) : (
+                  <Typography>Loading...</Typography>
+                )}
               </Table>
             ) : (
               <Typography variant="body1" color="initial">

@@ -102,7 +102,7 @@ const Index = () => {
             spacing={0}
             // flex="column"
           >
-            {data.length > 0 ? (
+            {data ? (
               <Table>
                 <TableHead>
                   <TableCell>#</TableCell>
@@ -114,47 +114,51 @@ const Index = () => {
                   <TableCell>Status</TableCell>
                   <TableCell>Options</TableCell>
                 </TableHead>
-                {data.map((item, index) => (
-                  <TableBody key={index + item.id}>
-                    <TableCell>{index}</TableCell>
-                    <TableCell>
-                      {item.avatar ? (
-                        <Image
-                          src={`${baseUrl}/images/categoryImages/${item.avatar}`}
-                          height={50}
-                          width={50}
-                          objectFit="cover"
-                        />
-                      ) : (
-                        <Avatar />
-                      )}
-                    </TableCell>
-                    <TableCell>{item.User?.name}</TableCell>
-                    <TableCell>
-                      {item.Recycler ? item.Recycler.companyName : "null"}
-                    </TableCell>
+                {data.length > 0 ? (
+                  data.map((item, index) => (
+                    <TableBody key={index + item.id}>
+                      <TableCell>{index}</TableCell>
+                      <TableCell>
+                        {item.avatar ? (
+                          <Image
+                            src={`${baseUrl}/images/categoryImages/${item.avatar}`}
+                            height={50}
+                            width={50}
+                            objectFit="cover"
+                          />
+                        ) : (
+                          <Avatar />
+                        )}
+                      </TableCell>
+                      <TableCell>{item.User?.name}</TableCell>
+                      <TableCell>
+                        {item.Recycler ? item.Recycler.companyName : "null"}
+                      </TableCell>
 
-                    <TableCell>{item.title}</TableCell>
-                    <TableCell>{item.body}</TableCell>
-                    <TableCell>{item.status ? "Read" : "Unread"}</TableCell>
-                    <TableCell>
-                      <Grid container spacing={1}>
-                        {/* <Grid item>
+                      <TableCell>{item.title}</TableCell>
+                      <TableCell>{item.body}</TableCell>
+                      <TableCell>{item.status ? "Read" : "Unread"}</TableCell>
+                      <TableCell>
+                        <Grid container spacing={1}>
+                          {/* <Grid item>
                           <IconButton>
                             <Edit color="info" />
                           </IconButton>
                         </Grid> */}
-                        <Grid item>
-                          <IconButton
-                            onClick={() => handleDelete(item.id.toString())}
-                          >
-                            <Delete color="error" />
-                          </IconButton>
+                          <Grid item>
+                            <IconButton
+                              onClick={() => handleDelete(item.id.toString())}
+                            >
+                              <Delete color="error" />
+                            </IconButton>
+                          </Grid>
                         </Grid>
-                      </Grid>
-                    </TableCell>
-                  </TableBody>
-                ))}
+                      </TableCell>
+                    </TableBody>
+                  ))
+                ) : (
+                  <Typography>Loading...</Typography>
+                )}
               </Table>
             ) : (
               <Typography variant="body1" color="initial">

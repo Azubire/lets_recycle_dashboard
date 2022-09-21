@@ -128,11 +128,11 @@ const SideNav = ({ open, handleDrawerClose }: props) => {
   return (
     <>
       <Drawer variant="permanent" open={open}>
-        <DrawerHeader>
+        <DrawerHeader style={{ backgroundColor: "#556cd6", color: "white" }}>
           <p>Menu</p>
-          <IconButton onClick={handleDrawerClose}>
+          <IconButton onClick={handleDrawerClose} style={{ color: "white" }}>
             {theme.direction === "rtl" ? (
-              <ChevronRightIcon />
+              <ChevronRightIcon color="inherit" />
             ) : (
               <ChevronLeftIcon />
             )}

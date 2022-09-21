@@ -92,7 +92,7 @@ const Home = (props: pageProps) => {
     <Container maxWidth="lg">
       <Grid container spacing={2}>
         {state.map((item, index) => (
-          <Grid key={item.id + index} item xs={2} md={4}>
+          <Grid key={item.id + index} item md={4}>
             <Paper
               sx={{
                 display: "flex",
