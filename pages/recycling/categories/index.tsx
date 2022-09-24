@@ -117,7 +117,6 @@ const Index = () => {
   }, [refresh]);
 
   return (
-    <>
       <Box>
         <Container maxWidth="lg">
           {/* modal  */}
@@ -255,7 +254,6 @@ const Index = () => {
           </Grid>
         </Container>
       </Box>
-    </>
   );
 };
 

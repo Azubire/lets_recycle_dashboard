@@ -118,97 +118,91 @@ const Index = () => {
   }, [refresh]);
 
   return (
-    <>
-      <Box>
-        <Container maxWidth="lg">
-          {/* modal  */}
+    <Box>
+      <Container maxWidth="xl">
+        {/* modal  */}
 
-          {/* hearder  */}
-          <Grid container spacing={0} mb={10} justifyContent="space-between">
-            <Box>
-              <Typography variant="h5" color="initial">
-                Registered Users
-              </Typography>
-            </Box>
-            <Box></Box>
-          </Grid>
-          {/* section  */}
-          <Grid
-            container
-            spacing={0}
-            // flex="column"
-          >
-            {data ? (
-              <Table>
-                <TableHead>
-                  <TableCell>#</TableCell>
-                  <TableCell>Profile Image</TableCell>
-                  <TableCell>Cover Image</TableCell>
-                  <TableCell>Name</TableCell>
-                  <TableCell>Email</TableCell>
-                  <TableCell>Country</TableCell>
-                  <TableCell>Region</TableCell>
-                  <TableCell>City</TableCell>
-                  <TableCell>Options</TableCell>
-                </TableHead>
-                {data.length > 0 ? (
-                  data.map((item, index) => (
-                    <>
-                      <TableBody>
-                        <TableCell>{index}</TableCell>
-                        <TableCell>
-                          <Image
-                            src={`${baseUrl}/images/categoryImages/${item.profileImg}`}
-                            height={50}
-                            width={50}
-                            objectFit="cover"
-                          />
-                        </TableCell>
-                        <TableCell>
-                          <Image
-                            src={`${baseUrl}/images/categoryImages/${item.coverImg}`}
-                            height={50}
-                            width={50}
-                            objectFit="cover"
-                          />
-                        </TableCell>
-                        <TableCell>{item.name}</TableCell>
-                        <TableCell>{item.email}</TableCell>
-                        <TableCell>{item.country}</TableCell>
-                        <TableCell>{item.region}</TableCell>
-                        <TableCell>{item.city}</TableCell>
-                        <TableCell>
-                          <Grid container spacing={1}>
-                            {/* <Grid item>
+        {/* hearder  */}
+        <Grid container spacing={0} mb={10} justifyContent="space-between">
+          <Box>
+            <Typography variant="h5" color="initial">
+              Registered Users
+            </Typography>
+          </Box>
+          <Box></Box>
+        </Grid>
+        {/* section  */}
+        <Grid container spacing={0}>
+          {data ? (
+            <Table>
+              <TableHead>
+                <TableCell>#</TableCell>
+                <TableCell>Profile Image</TableCell>
+                <TableCell>Cover Image</TableCell>
+                <TableCell>Name</TableCell>
+                <TableCell>Email</TableCell>
+                <TableCell>Country</TableCell>
+                <TableCell>Region</TableCell>
+                <TableCell>City</TableCell>
+                <TableCell>Options</TableCell>
+              </TableHead>
+              {data.length > 0 ? (
+                data.map((item, index) => (
+                  <>
+                    <TableBody>
+                      <TableCell>{index}</TableCell>
+                      <TableCell>
+                        <Image
+                          src={`${baseUrl}/images/categoryImages/${item.profileImg}`}
+                          height={50}
+                          width={50}
+                          objectFit="cover"
+                        />
+                      </TableCell>
+                      <TableCell>
+                        <Image
+                          src={`${baseUrl}/images/categoryImages/${item.coverImg}`}
+                          height={50}
+                          width={50}
+                          objectFit="cover"
+                        />
+                      </TableCell>
+                      <TableCell>{item.name}</TableCell>
+                      <TableCell>{item.email}</TableCell>
+                      <TableCell>{item.country}</TableCell>
+                      <TableCell>{item.region}</TableCell>
+                      <TableCell>{item.city}</TableCell>
+                      <TableCell>
+                        <Grid container spacing={1}>
+                          {/* <Grid item>
                             <IconButton>
                               <Edit color="info" />
                             </IconButton>
                           </Grid> */}
-                            <Grid item>
-                              <IconButton
-                                onClick={() => handleDelete(item.id.toString())}
-                              >
-                                <Delete color="error" />
-                              </IconButton>
-                            </Grid>
+                          <Grid item>
+                            <IconButton
+                              onClick={() => handleDelete(item.id.toString())}
+                            >
+                              <Delete color="error" />
+                            </IconButton>
                           </Grid>
-                        </TableCell>
-                      </TableBody>
-                    </>
-                  ))
-                ) : (
-                  <Typography>Loading...</Typography>
-                )}
-              </Table>
-            ) : (
-              <Typography variant="body1" color="initial">
-                No data to show
-              </Typography>
-            )}
-          </Grid>
-        </Container>
-      </Box>
-    </>
+                        </Grid>
+                      </TableCell>
+                    </TableBody>
+                  </>
+                ))
+              ) : (
+                <Typography>Loading...</Typography>
+              )}
+            </Table>
+          ) : (
+            <Typography variant="body1" color="initial">
+              No data to show
+            </Typography>
+          )}
+        </Grid>
+      </Container>
+    </Box>
   );
 };
 
