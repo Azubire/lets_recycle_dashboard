@@ -66,20 +66,22 @@ const Index = () => {
 
   // delete
   const handleDelete = async (id: string) => {
+    setLoading(true);
     try {
       const data = await fetch(`${baseUrl}/notifications/delete/${id}`, {
         method: "DELETE",
       });
 
-      console.log(await data.json());
+      // console.log(await data.json());
       setRefresh(!refresh);
+      setLoading(false);
     } catch (error) {
+      setLoading(false);
       console.log(error);
     }
   };
 
   React.useEffect(() => {
-    console.log("mouted");
     getCat();
   }, [refresh]);
 
@@ -102,7 +104,9 @@ const Index = () => {
             spacing={0}
             // flex="column"
           >
-            {data ? (
+            {loading ? (
+              <Typography>Loading..</Typography>
+            ) : data ? (
               <Table>
                 <TableHead>
                   <TableCell>#</TableCell>

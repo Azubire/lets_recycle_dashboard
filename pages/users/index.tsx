@@ -100,6 +100,7 @@ const Index = () => {
 
   // delete
   const handleDelete = async (id: string) => {
+    setLoading(true);
     try {
       const data = await fetch(`${baseUrl}/users/delete/${id}`, {
         method: "DELETE",
@@ -133,7 +134,9 @@ const Index = () => {
         </Grid>
         {/* section  */}
         <Grid container spacing={0}>
-          {data ? (
+          {loading ? (
+            <Typography>Loadind...</Typography>
+          ) : data ? (
             <Table>
               <TableHead>
                 <TableCell>#</TableCell>

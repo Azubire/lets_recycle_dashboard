@@ -99,6 +99,7 @@ const Index = () => {
 
   // delete
   const handleDelete = async (id: string) => {
+    setLoading(true);
     try {
       const data = await fetch(`${baseUrl}/adverts/delete/${id}`, {
         method: "DELETE",
@@ -144,7 +145,9 @@ const Index = () => {
             spacing={0}
             // flex="column"
           >
-            {data ? (
+            {loading ? (
+              <Typography>Loading</Typography>
+            ) : data ? (
               <Table>
                 <TableHead>
                   <TableCell>#</TableCell>
